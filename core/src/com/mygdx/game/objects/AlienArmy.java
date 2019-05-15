@@ -72,8 +72,8 @@ public class AlienArmy {
 
 
     void positionAliens(){
-        for (int i = 0; i < 1; i++) {  // fila
-            for (int j = 0; j < 1; j++) {  // columna
+        for (int i = 0; i < 5; i++) {  // fila
+            for (int j = 0; j < 11; j++) {  // columna
                 aliens.add(new Alien(j*30 + 10, y - i*12));
             }
         }
