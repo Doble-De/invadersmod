@@ -12,7 +12,11 @@ public class AlienArmy {
 
     int x, y, maxX;
 
-    float speed = 8f;
+    float speed = 10f;
+    float descense = 10f;
+    boolean bajar = false;
+    int columnap = 0;
+    int columnaf = 11;
 
     Array<Alien> aliens;
     Array<AlienShoot> shoots;
@@ -29,7 +33,7 @@ public class AlienArmy {
         aliens = new Array<Alien>();
         shoots = new Array<AlienShoot>();
 
-        moveTimer = new Timer(0.8f);
+        moveTimer = new Timer(1.2f);
         shootTimer = new Timer(random.nextFloat()%5+1);
 
         positionAliens();
@@ -68,8 +72,8 @@ public class AlienArmy {
 
 
     void positionAliens(){
-        for (int i = 0; i < 5; i++) {  // fila
-            for (int j = 0; j < 11; j++) {  // columna
+        for (int i = 0; i < 1; i++) {  // fila
+            for (int j = 0; j < 1; j++) {  // columna
                 aliens.add(new Alien(j*30 + 10, y - i*12));
             }
         }
@@ -83,13 +87,23 @@ public class AlienArmy {
             if(x > maxX){
                 x = maxX;
                 speed *= -1;
+                bajar = true;
             } else if(x < 0){
                 x = 0;
                 speed *= -1;
+                bajar = true;
             }
 
-            for (Alien alien : aliens) {
-                alien.position.x += speed;
+            if (!bajar){
+                for (Alien alien : aliens) {
+                    alien.position.x += speed;
+                }
+            }
+            if (bajar) {
+                for (Alien alien : aliens) {
+                    alien.position.y -= descense;
+                    bajar = false;
+                }
             }
         }
     }
@@ -132,5 +146,4 @@ public class AlienArmy {
             shoots.removeValue(shoot, true);
         }
     }
-
 }

@@ -9,10 +9,15 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Assets extends AssetManager {
     public TextureAtlas atlas;
-    public Animation<TextureRegion> space, alien, aliendie, naveidle, naveleft, naveright, naveshoot, shoot ,alienshoot;
+    public Animation<TextureRegion> space, alien, aliendie, naveidle, naveleft, naveright, naveshoot, shoot ,alienshoot,navedie, fuego1, fuego2;
     public Sound shootSound = Gdx.audio.newSound(Gdx.files.internal("shootsound.wav"));
     public Sound alienSound = Gdx.audio.newSound(Gdx.files.internal("aliensound.wav"));
     public Sound aliendieSound = Gdx.audio.newSound(Gdx.files.internal("aliendie.wav"));
+    public Sound selectSound = Gdx.audio.newSound(Gdx.files.internal("selection.ogg"));
+    public Sound explosionSound = Gdx.audio.newSound(Gdx.files.internal("explosion.ogg"));
+    public Sound startSound = Gdx.audio.newSound(Gdx.files.internal("go.ogg"));
+    public Sound winSound = Gdx.audio.newSound(Gdx.files.internal("victory.ogg"));
+    public TextureRegion logo, start, exit,  win, over, tryagain, playagain;
 
     public void load(){
         load("invaders.atlas", TextureAtlas.class);
@@ -41,5 +46,16 @@ public class Assets extends AssetManager {
         naveshoot = new Animation<TextureRegion>(0.1f, atlas.findRegions("naveshoot"));
         shoot = new Animation<TextureRegion>(0.02f, atlas.findRegions("shoot"));
         alienshoot = new Animation<TextureRegion>(0.1f, atlas.findRegions("alienshoot"));
+        navedie = new Animation <TextureRegion>(0.05f, atlas.findRegions("explousion"));
+        fuego1 = new Animation<TextureRegion>(0.01f, atlas.findRegions("Artif1"));
+        fuego2 = new Animation <TextureRegion>(0.01f, atlas.findRegions("Artif2"));
+
+        win = atlas.findRegion("win");
+        over = atlas.findRegion("gameover");
+        logo = atlas.findRegion("spacelogo");
+        start = atlas.findRegion("start");
+        exit = atlas.findRegion("exit");
+        playagain = atlas.findRegion("playagain");
+        tryagain = atlas.findRegion("again");
     }
 }

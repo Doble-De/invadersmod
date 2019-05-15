@@ -24,4 +24,5 @@ public class SpaceInvaders extends Game {
 
         super.render();
     }
+
 }

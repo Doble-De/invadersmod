@@ -14,6 +14,6 @@ public class LoadingScreen extends SpaceInvadersScreen {
             return;
         }
 
-        setScreen(new GameScreen(game));
+        setScreen(new MenuScreen(game));
     }
 }

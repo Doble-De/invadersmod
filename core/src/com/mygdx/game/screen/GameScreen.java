@@ -18,6 +18,7 @@ public class GameScreen extends SpaceInvadersScreen {
     public int SCENE_HEIGHT = 256;
 
     World world;
+    String tipo = "";
 
     public GameScreen(SpaceInvaders spaceInvaders) {
         super(spaceInvaders);
@@ -39,7 +40,16 @@ public class GameScreen extends SpaceInvadersScreen {
     public void render(float delta) {
         spriteBatch.setProjectionMatrix(camera.combined);
 
-        world.render(delta, spriteBatch, assets);
+        tipo = world.render(delta, spriteBatch, assets);
+
+        if (tipo.equals("over")){
+            setScreen(new GameOverScreen(game));
+            spriteBatch.end();
+        } else if (tipo.equals("win")){
+            setScreen(new WinScreen(game));
+            spriteBatch.end();
+        }
+
     }
 
     @Override
